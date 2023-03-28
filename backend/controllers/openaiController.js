@@ -2,15 +2,20 @@ const axios = require('axios');
 
 exports.completionsController = async (req, res) => {
   try {
+    //const inputPrompt = `Summarize the following notes for me: ${req.body.prompt}`;
     const inputPrompt = req.body.prompt;
+    if (typeof inputPrompt !== 'string') {
+      res.status(400).json({ error: 'Prompt must be a string' });
+      return;
+    }
 
     const response = await axios.post(
       'https://api.openai.com/v1/completions',
       {
         model: 'text-davinci-003',
         prompt: inputPrompt,
-        max_tokens: 50,
-        temperature: 0.8,
+        max_tokens: 150,
+        temperature: 0.6,
       },
       {
         headers: {
@@ -36,6 +41,7 @@ exports.chatCompletionsController = async (req, res) => {
         {
           model: 'gpt-3.5-turbo',
           messages: inputMessages,
+          max_tokens: 100,
         },
         {
           headers: {
