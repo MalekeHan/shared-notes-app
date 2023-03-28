@@ -1,7 +1,8 @@
-const express = require('express'); //Imports the "express" library
-const router = express.Router(); 
-const { openaiController } = require('../controllers/openaiController'); //imports the openaiController from openaiController.js
+const express = require('express');
+const router = express.Router();
+const { completionsController, chatCompletionsController } = require('../controllers/openaiController');
 
-router.post('/generate', openaiController); //sets up a POST route at /generate that uses the controller
+router.post('/completion', completionsController);
+router.post('/chat', chatCompletionsController);
 
-module.exports = router; //export the router to the app.js file
+module.exports = router;
