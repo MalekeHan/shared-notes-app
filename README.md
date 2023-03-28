@@ -1,6 +1,5 @@
 # shared-notes-app
 
-Short description of the project.
 This is a web application that allows users to save and generate summaries of notes. It is built using React.js for the front-end and Node.js with Express for the back-end.
 
 ## Getting Started
